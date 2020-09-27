@@ -72,7 +72,7 @@ int main()
 		}
 		grupe.push_back(laikinas);
 
-		cout << laikinas.vardas << " " << laikinas.pavarde;
+		cout <<"Studentas: " << laikinas.vardas << " " << laikinas.pavarde << endl;
 		cout << "Egzamino ivertinimas: " << laikinas.egzaminas << endl;
 		cout << "Semestro namu darbu pazymiai: ";
 		for (auto& p : laikinas.pazymiai) {
