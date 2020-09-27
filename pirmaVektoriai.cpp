@@ -2,7 +2,9 @@
 //
 
 #include <iostream>
+#include <string>
 #include <vector>
+#include <numeric>
 
 using namespace std;
 
@@ -14,6 +16,21 @@ struct studentas {
     float galutinis;
 };
 
+float galutinis_balas(vector<int> pazymiai, int egzaminas) {
+    int suma = 0;
+    int dydis = pazymiai.size();
+
+    for (int i = 0; i < dydis; i++) {
+        suma += pazymiai[i];
+    }
+
+    float vidurkis = suma / dydis;
+
+    float galutinis = 0.4 * vidurkis + 0.6 * egzaminas;
+
+    return galutinis;
+}
+
 int main()
 {
     vector<studentas> grupe;
@@ -24,23 +41,38 @@ int main()
     cin >> n;
     grupe.reserve(n);
 
-    vector<int> pazymiai;
-
     for (int i = 0; i < n; i++) {
         cout << "Iveskite studento varda, pavarde, egzamino ivertinima: " << endl;
         cin >> laikinas.vardas >> laikinas.pavarde >> laikinas.egzaminas;
 
-        grupe.push_back(laikinas);
-
         cout << "Iveskite studento semestro namu darbu pazymius" << endl;
         cout << "Suvede visus pazymius, suveskite 'end' ir spauskite Enter" << endl;
         
+        laikinas.pazymiai.reserve(50);
+        string input = "";
+        while (input != "end") {
+
+            cin >> input;
+            if (input == "end"){
+                break;
+            }
+            laikinas.pazymiai.push_back(std::stoi(input));
+        }
+        grupe.push_back(laikinas);
     }
 
     cout << "Ivesti duomenys" << endl;
     cout << "--------------------------" << endl;
     for (auto &g : grupe) {
-        cout << g.vardas << " " << g.pavarde << " " << g.egzaminas << endl;
+        cout << "Studentas: " << g.vardas << " " << g.pavarde << endl;
+        cout << "Egzamino ivertinimas: " << g.egzaminas << endl;
+        cout << "Semestro namu darbu pazymiai: ";
+        for (auto& p : g.pazymiai) {
+            cout << p << " ";
+        }
+        cout << endl;
+        cout << "Galutinis balas: " << galutinis_balas(g.pazymiai, g.egzaminas) << endl;
+        g.pazymiai.clear();
     }
     grupe.clear();
 
