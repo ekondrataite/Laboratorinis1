@@ -1,1 +1,1 @@
-# v.01-su-vektoriais
+# Laboratorinis darbas.
