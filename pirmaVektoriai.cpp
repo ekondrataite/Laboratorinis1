@@ -9,6 +9,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <iomanip>
+#include <sstream>
 
 using namespace std;
 
@@ -19,6 +20,8 @@ struct studentas {
 	float egzaminas;
 	float galutinis;
 };
+
+//funkcijos reikalingos galutinio balo apskaiciavimui;
 
 float vidurkis(vector<int> pazymiai) {
 	int suma = 0;
@@ -45,6 +48,8 @@ float galutinis_balas(float vidurkis, int egzaminas) {
 	return 0.4 * vidurkis + 0.6 * egzaminas;
 }
 
+//komparatoriai reikalingi rusiavimui;
+
 bool compareV(studentas a, studentas b) {
 	return a.vardas < b.vardas;
 }
@@ -52,18 +57,24 @@ bool compareP(studentas a, studentas  b) {
 	return a.pavarde < b.pavarde;
 }
 
-/*void read_file(string str_File, vector<string>  grupe, ifstream& iFile) {
-	string vardas, pavarde;
-	//int egz;
+//failo nuskaitymui
 
-	iFile.open(str_File.c_str());
-
-	while (iFile >> vardas >> pavarde) {
-		grupe.push_back(vardas + " " + pavarde);
+void skaityti_faila() {
+	ifstream failas("kursiokai.txt");
+	if (!failas.is_open()) {
+		cout << "Klaida! Failas nenuskaitytas";
 	}
-
-	iFile.close();
-}*/
+	string mytext;
+	getline(failas, mytext);
+	while (getline(failas, mytext)) {
+		vector<string> rezultatas;
+		istringstream iss(mytext);
+		for (string s; iss >> s;) {
+			rezultatas.push_back(s);
+			cout << s << endl;
+		}
+	}
+}
 
 int main()
 {
@@ -80,13 +91,27 @@ int main()
 	//failo nuskaitymas
 
 	if (pasirinkimas == "Nuskaityti") {
-		ifstream file("C://Users/Egle/source/repos/pirmaVektoriai/pirmaVektoriai");
+		ifstream file("kursiokai.txt");
 
-		int pazymys = 0;
+		skaityti_faila(); // NEVEIKIA!!!
 
-		//getline(file, myText);
+		//neveikia
+		/*if (file.is_open())
+		{
+			while (getline(file, mytext)) {
+				
+				cout << mytext;
+			}
 
-		while (!file.eof()) {
+			file.close();
+		}
+
+		else cout << "Klaida: failo atidaryti nepavyko!";
+
+		return 0;*/
+
+		//neveikia
+		/*while (!file.eof()) {
 
 			file >> laikinas.vardas >> laikinas.pavarde;
 
@@ -98,8 +123,17 @@ int main()
 			file >> laikinas.egzaminas;
 		}
 		grupe.push_back(laikinas);
+
+		for (auto& g : grupe) {
+			cout << g.vardas << setw(30) << g.pavarde << setw(30) << galutinis_balas(vidurkis(g.pazymiai), g.egzaminas) << setw(30);
+			cout << setw(30) << galutinis_balas(mediana(g.pazymiai), g.egzaminas) << endl;
+			g.pazymiai.clear();
+		}
+		grupe.clear();*/
 		
 	}
+
+	//duomenu suvedimas ranka;
 
 	if (pasirinkimas == "Ivesti") {
 		int n = 0;
@@ -138,6 +172,8 @@ int main()
 		}
 	}
 
+	//pasirenkama pagal ka rusiuoti ir su rusiuojama;
+
 	cout << "Iveskite kaip norite rusiuoti duomenis" << endl;
 	cout << "Jei rusiuosite pagal vardus iveskite 'V'" << endl;
 	cout << "Jei rusiuosite pagal pavardes iveskite 'P'" << endl;
@@ -148,9 +184,11 @@ int main()
 	if (p == "V") {
 		sort(grupe.begin(), grupe.end(), compareV);
 	}
-	else {
+	else if(p == "P") {
 		sort(grupe.begin(), grupe.end(), compareP);
 	}
+
+	//suvestu duomenu ispausdinimas;
 
 	cout << "Iseitis" << endl;
 	cout << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << setw(30);
