@@ -1,4 +1,5 @@
 // pirmaVektoriai.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// github: https://github.com/ekondrataite/v.01-su-vektoriais
 //
 
 #include <iostream>
@@ -170,22 +171,22 @@ int main()
 			}
 			cout << endl;
 		}
-	}
 
-	//pasirenkama pagal ka rusiuoti ir su rusiuojama;
+		//pasirenkama pagal ka rusiuoti ir su rusiuojama;
 
-	cout << "Iveskite kaip norite rusiuoti duomenis" << endl;
-	cout << "Jei rusiuosite pagal vardus iveskite 'V'" << endl;
-	cout << "Jei rusiuosite pagal pavardes iveskite 'P'" << endl;
+		cout << "Iveskite kaip norite rusiuoti duomenis" << endl;
+		cout << "Jei rusiuosite pagal vardus iveskite 'V'" << endl;
+		cout << "Jei rusiuosite pagal pavardes iveskite 'P'" << endl;
 
-	string p;
-	cin >> p;
+		string p;
+		cin >> p;
 
-	if (p == "V") {
-		sort(grupe.begin(), grupe.end(), compareV);
-	}
-	else if(p == "P") {
-		sort(grupe.begin(), grupe.end(), compareP);
+		if (p == "V") {
+			sort(grupe.begin(), grupe.end(), compareV);
+		}
+		else if (p == "P") {
+			sort(grupe.begin(), grupe.end(), compareP);
+		}
 	}
 
 	//suvestu duomenu ispausdinimas;
