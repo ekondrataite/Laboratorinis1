@@ -52,6 +52,19 @@ bool compareP(studentas a, studentas  b) {
 	return a.pavarde < b.pavarde;
 }
 
+/*void read_file(string str_File, vector<string>  grupe, ifstream& iFile) {
+	string vardas, pavarde;
+	//int egz;
+
+	iFile.open(str_File.c_str());
+
+	while (iFile >> vardas >> pavarde) {
+		grupe.push_back(vardas + " " + pavarde);
+	}
+
+	iFile.close();
+}*/
+
 int main()
 {
 	cout << "Ar norite duomenis ivesti ar nuskaityti is failo?" << endl;
@@ -67,30 +80,24 @@ int main()
 	//failo nuskaitymas
 
 	if (pasirinkimas == "Nuskaityti") {
-		ifstream file("studentai10000.txt");
+		ifstream file("C://Users/Egle/source/repos/pirmaVektoriai/pirmaVektoriai");
 
-		string vardas, pavarde;
-		int pazymiai;
-		float egzaminas;
-		int l;
+		int pazymys = 0;
 
-		file >> l;
+		//getline(file, myText);
 
-		for (int key = 0; key < l; key++) {
-			file >> vardas;
-			grupe[key].vardas;
+		while (!file.eof()) {
 
-			file >> pavarde;
-			grupe[key].pavarde;
+			file >> laikinas.vardas >> laikinas.pavarde;
 
-			file >> pazymiai;
-			laikinas.pazymiai.push_back(key);
+			for (int x = 0; x < 15; x++) {
+				file >> pazymys;
+				laikinas.pazymiai.push_back(pazymys);
+			}
 
-			file >> egzaminas;
-			grupe[key].egzaminas;
+			file >> laikinas.egzaminas;
 		}
-		return l;
-
+		grupe.push_back(laikinas);
 		
 	}
 
