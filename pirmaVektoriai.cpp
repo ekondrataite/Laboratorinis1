@@ -24,7 +24,6 @@ struct studentas {
 	string pavarde;
 	vector<int> pazymiai;
 	float egzaminas;
-	float galutinis;
 };
 
 //funkcijos reikalingos galutinio balo apskaiciavimui;
@@ -116,7 +115,7 @@ int main()
 		ofstream mano_failas;
 		fstream failas;
 
-		string f = "kursiokai.txt";
+		string f = "studentai10000.txt";
 
 		failas.open(f);
 
@@ -183,7 +182,18 @@ int main()
 				laikinas.clear();
 			}
 
-			cout << "Iveskite kaip norite rusiuoti duomenis" << endl;
+			//galutiniu balu skaiciavimai
+
+			vector<double> vidurkiai;
+			vector<double> medianos;
+
+			/*for (int i = 0; i < grupe.size(); i++) {
+				vidurkiai.push_back(galutinis_balas(vidurkis(grupe[i].pazymiai)));
+				medianos.push_back(galutinis_balas(mediana(grupe[i].pazymiai)))
+
+			}*/
+
+			cout << "Iveskite kaip norite rusiuoti duomenis:" << endl;
 			cout << "Jei rusiuosite pagal vardus iveskite 'V'" << endl;
 			cout << "Jei rusiuosite pagal pavardes iveskite 'P'" << endl;
 
@@ -200,6 +210,9 @@ int main()
 			//spausdinimas(grupe);
 
 			//suvedimas i faila
+
+			mano_failas.open("kursiokai.txt");
+
 			if (mano_failas.fail())
 			{
 				perror(nullptr);
@@ -207,7 +220,16 @@ int main()
 			}
 
 			else {
-
+				for (int i = 0; i < rezultatai1.size(); i++) {
+					mano_failas << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << setw(30) << "Galutinis balas (mediana)" << endl;
+				}
+				for (auto& g : grupe) {
+					mano_failas << g.vardas << setw(30) << g.pavarde << setw(30) << galutinis_balas(vidurkis(g.pazymiai), g.egzaminas) << setw(30);
+					mano_failas << galutinis_balas(mediana(g.pazymiai), g.egzaminas) << endl;
+					g.pazymiai.clear();
+				}
+				mano_failas.close();
+				grupe.clear();
 			}
 		}
 
@@ -227,7 +249,7 @@ int main()
 			cout << "Iveskite studento varda, pavarde, egzamino ivertinima: " << endl;
 			cin >> laikinas.vardas >> laikinas.pavarde >> laikinas.egzaminas;
 
-			cout << "Iveskite studento semestro namu darbu pazymius" << endl;
+			cout << "Iveskite studento semestro namu darbu pazymius." << endl;
 			cout << "Suvede visus pazymius, suveskite 'end' ir spauskite Enter" << endl;
 
 			laikinas.pazymiai.reserve(50);
@@ -253,7 +275,7 @@ int main()
 
 		//pasirenkama pagal ka rusiuoti ir su rusiuojama;
 
-		cout << "Iveskite kaip norite rusiuoti duomenis" << endl;
+		cout << "Iveskite kaip norite rusiuoti duomenis:" << endl;
 		cout << "Jei rusiuosite pagal vardus iveskite 'V'" << endl;
 		cout << "Jei rusiuosite pagal pavardes iveskite 'P'" << endl;
 
@@ -266,5 +288,7 @@ int main()
 		else if (p == "P") {
 			sort(grupe.begin(), grupe.end(), compareP);
 		}
+
+		spausdinimas(grupe);
 	}
 }
