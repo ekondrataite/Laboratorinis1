@@ -49,7 +49,7 @@ float mediana(vector<int> pazymiai) {
 	}
 }
 
-float galutinis_balas(float vidurkis, int egzaminas) {
+float galutinis_balas(int egzaminas, float vidurkis) {
 	return 0.4 * vidurkis + 0.6 * egzaminas;
 }
 
@@ -76,7 +76,7 @@ void skaityti_faila() {
 		stringstream iss(mytext);
 		for (string s; iss >> s;) {
 			rezultatas.push_back(s);
-			cout << s << endl;
+			//cout << s << endl;
 		}
 	}
 }
@@ -85,12 +85,11 @@ void skaityti_faila() {
 
 void spausdinimas(vector<studentas> grupe) {
 	cout << "Iseitis" << endl;
-	cout << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << setw(30);
-	cout << "Galutinis balas (mediana)" << endl;
-	cout << "------------------------------------------------------------------------------------------" << endl;
+	cout << left << setw(30) << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << setw(35) << "Galutinis balas (mediana)" << endl;
+	cout << "------------------------------------------------------------------------------------------------------" << endl;
 	for (auto& g : grupe) {
-		cout << g.vardas << setw(30) << g.pavarde << setw(30) << galutinis_balas(vidurkis(g.pazymiai), g.egzaminas) << setw(30);
-		cout << setw(30) << galutinis_balas(mediana(g.pazymiai), g.egzaminas) << endl;
+		cout << left << setw(30) << g.vardas << setw(30) << g.pavarde << setw(30) << galutinis_balas(g.egzaminas, vidurkis(g.pazymiai)) << setw(30);
+		cout << setw(30) << galutinis_balas(g.egzaminas, mediana(g.pazymiai)) << endl;
 		g.pazymiai.clear();
 	}
 	grupe.clear();
@@ -182,16 +181,7 @@ int main()
 				laikinas.clear();
 			}
 
-			//galutiniu balu skaiciavimai
-
-			vector<double> vidurkiai;
-			vector<double> medianos;
-
-			/*for (int i = 0; i < grupe.size(); i++) {
-				vidurkiai.push_back(galutinis_balas(vidurkis(grupe[i].pazymiai)));
-				medianos.push_back(galutinis_balas(mediana(grupe[i].pazymiai)))
-
-			}*/
+			//rusiavimas
 
 			cout << "Iveskite kaip norite rusiuoti duomenis:" << endl;
 			cout << "Jei rusiuosite pagal vardus iveskite 'V'" << endl;
@@ -220,13 +210,13 @@ int main()
 			}
 
 			else {
-				for (int i = 0; i < rezultatai1.size(); i++) {
-					mano_failas << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << setw(30) << "Galutinis balas (mediana)" << endl;
-				}
-				for (auto& g : grupe) {
-					mano_failas << g.vardas << setw(30) << g.pavarde << setw(30) << galutinis_balas(vidurkis(g.pazymiai), g.egzaminas) << setw(30);
-					mano_failas << galutinis_balas(mediana(g.pazymiai), g.egzaminas) << endl;
-					g.pazymiai.clear();
+				mano_failas << left << setw(30) << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << setw(35) << "Galutinis balas (mediana)" << endl;
+				mano_failas << "----------------------------------------------------------------------------------------------------------------------------------" << endl;
+
+				for (int i = 0; i < grupe.size(); i++) {
+					mano_failas << left << setw(30) << grupe[i].vardas << setw(30) << grupe[i].pavarde << setw(30) << galutinis_balas(grupe[i].pazymiai.back(), vidurkis(grupe[i].pazymiai)) << setw(30);
+					mano_failas << galutinis_balas(grupe[i].pazymiai.back(), mediana(grupe[i].pazymiai)) << endl;
+					grupe[i].pazymiai.clear();
 				}
 				mano_failas.close();
 				grupe.clear();
