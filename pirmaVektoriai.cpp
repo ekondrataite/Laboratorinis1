@@ -86,7 +86,7 @@ void skaityti_faila() {
 void spausdinimas(vector<studentas> grupe) {
 	cout << "Iseitis" << endl;
 	cout << left << setw(30) << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << setw(35) << "Galutinis balas (mediana)" << endl;
-	cout << "------------------------------------------------------------------------------------------------------" << endl;
+	cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	for (auto& g : grupe) {
 		cout << left << setw(30) << g.vardas << setw(30) << g.pavarde << setw(30) << galutinis_balas(g.egzaminas, vidurkis(g.pazymiai)) << setw(30);
 		cout << setw(30) << galutinis_balas(g.egzaminas, mediana(g.pazymiai)) << endl;
@@ -127,6 +127,7 @@ int main()
 		vector<studentas> grupe;
 		vector<int> laikinas;
 
+		//suzinome kiek yra eiluciu ir stulpeliu
 		while (getline(failas, eilute)) {
 			rows++;
 			if (rows == 1) {
@@ -236,31 +237,80 @@ int main()
 		grupe.reserve(n);
 
 		for (int i = 0; i < n; i++) {
-			cout << "Iveskite studento varda, pavarde, egzamino ivertinima: " << endl;
-			cin >> laikinas.vardas >> laikinas.pavarde >> laikinas.egzaminas;
+			cout << "Iveskite studento varda, pavarde: " << endl;
+			cin >> laikinas.vardas >> laikinas.pavarde;
 
-			cout << "Iveskite studento semestro namu darbu pazymius." << endl;
-			cout << "Suvede visus pazymius, suveskite 'end' ir spauskite Enter" << endl;
+			cout << "Ar egzamino ivertinima sugeneruoti automatiskai? " << endl;
+			cout << "Iveskite 'Taip' arba 'Ne'" << endl;
 
-			laikinas.pazymiai.reserve(50);
-			string input = "";
-			while (input != "end") {
+			string a;
+			cin >> a;
 
-				cin >> input;
-				if (input == "end") {
-					break;
+
+			if (a == "Taip") {
+				srand(time(NULL));
+				int sugeneruotas = rand() % 10 + 1;
+				laikinas.egzaminas = sugeneruotas;
+
+				cout << "Sugeneruotas egzamino ivertinimas: " << sugeneruotas << endl;
+			}
+
+			cout << "Ar semestro namu darbu ivertinimus sugeneruoti automatiskai? " << endl;
+			cout << "Iveskite 'Taip' arba 'Ne'" << endl;
+
+			string b;
+			cin >> b;
+
+			if (b == "Taip") {
+				while (true) {
+					srand(time(0));
+					int sugeneruotas = rand() % 10 + 1;
+					laikinas.pazymiai.push_back(sugeneruotas);
+
+					cout << "Sugeneruotas ivertinimas: " << sugeneruotas << endl;
+
+					cout << "Ar norite sugeneruoti dar viena pazymi?" << endl;
+					cout << "Iveskite 'Taip' arba 'Ne'" << endl;
+
+					string c;
+					cin >> c;
+
+					if (c == "Ne") {
+						break;
+					}
 				}
-				laikinas.pazymiai.push_back(stoi(input));
+				grupe.push_back(laikinas);
 			}
-			grupe.push_back(laikinas);
 
-			cout << "Studentas: " << laikinas.vardas << " " << laikinas.pavarde << endl;
-			cout << "Egzamino ivertinimas: " << laikinas.egzaminas << endl;
-			cout << "Semestro namu darbu pazymiai: ";
-			for (auto& p : laikinas.pazymiai) {
-				cout << p << " ";
+			if (b == "Ne") {
+				cout << "Iveskite studento egzamino ivertinimas: " << endl;
+				cin >> laikinas.egzaminas;
+
+				cout << "Iveskite studento semestro namu darbu pazymius." << endl;
+				cout << "Suvede visus pazymius, suveskite 'end' ir spauskite Enter" << endl;
+
+				string input;
+
+				laikinas.pazymiai.reserve(50);
+				
+				while (input != "end") {
+
+					cin >> input;
+					if (input == "end") {
+						break;
+					}
+					laikinas.pazymiai.push_back(stoi(input));
+				}
+				grupe.push_back(laikinas);
+
+				cout << "Studentas: " << laikinas.vardas << " " << laikinas.pavarde << endl;
+				cout << "Egzamino ivertinimas: " << laikinas.egzaminas << endl;
+				cout << "Semestro namu darbu pazymiai: ";
+				for (auto& p : laikinas.pazymiai) {
+					cout << p << " ";
+				}
+				cout << endl;
 			}
-			cout << endl;
 		}
 
 		//pasirenkama pagal ka rusiuoti ir su rusiuojama;
