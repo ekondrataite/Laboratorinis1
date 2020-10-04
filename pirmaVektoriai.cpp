@@ -1,5 +1,5 @@
 // pirmaVektoriai.cpp : This file contains the 'main' function. Program execution begins and ends there.
-// github: https://github.com/ekondrataite/v.01-su-vektoriais
+// github: https://github.com/ekondrataite/Laboratorinis
 //
 
 #include <iostream>
@@ -88,8 +88,8 @@ void spausdinimas(vector<studentas> grupe) {
 	cout << left << setw(30) << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << setw(35) << "Galutinis balas (mediana)" << endl;
 	cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	for (auto& g : grupe) {
-		cout << left << setw(30) << g.vardas << setw(30) << g.pavarde << setw(30) << galutinis_balas(g.egzaminas, vidurkis(g.pazymiai)) << setw(30);
-		cout << setw(30) << galutinis_balas(g.egzaminas, mediana(g.pazymiai)) << endl;
+		cout << left << setw(30) << g.vardas << setw(30) << g.pavarde << setw(30) << fixed << setprecision(2) << galutinis_balas(g.egzaminas, vidurkis(g.pazymiai)) << setw(30);
+		cout << setw(30) << fixed << setprecision(2) << galutinis_balas(g.egzaminas, mediana(g.pazymiai)) << endl;
 		g.pazymiai.clear();
 	}
 	grupe.clear();
@@ -114,7 +114,9 @@ int main()
 		ofstream mano_failas;
 		fstream failas;
 
-		string f = "studentai10000.txt";
+		string f;
+		cout << "Iveskite failo pavadinima (faila nurodykite su .txt gale)" << endl;
+		cin >> f;
 
 		failas.open(f);
 
@@ -198,8 +200,6 @@ int main()
 				sort(grupe.begin(), grupe.end(), compareP);
 			}
 
-			//spausdinimas(grupe);
-
 			//suvedimas i faila
 
 			mano_failas.open("kursiokai.txt");
@@ -215,8 +215,8 @@ int main()
 				mano_failas << "----------------------------------------------------------------------------------------------------------------------------------" << endl;
 
 				for (int i = 0; i < grupe.size(); i++) {
-					mano_failas << left << setw(30) << grupe[i].vardas << setw(30) << grupe[i].pavarde << setw(30) << galutinis_balas(grupe[i].pazymiai.back(), vidurkis(grupe[i].pazymiai)) << setw(30);
-					mano_failas << galutinis_balas(grupe[i].pazymiai.back(), mediana(grupe[i].pazymiai)) << endl;
+					mano_failas << left << setw(30) << grupe[i].vardas << setw(30) << grupe[i].pavarde << setw(30) << fixed << setprecision(2) << galutinis_balas(grupe[i].pazymiai.back(), vidurkis(grupe[i].pazymiai)) << setw(30);
+					mano_failas << fixed << setprecision(2) << galutinis_balas(grupe[i].pazymiai.back(), mediana(grupe[i].pazymiai)) << endl;
 					grupe[i].pazymiai.clear();
 				}
 				mano_failas.close();
@@ -328,7 +328,6 @@ int main()
 		else if (p == "P") {
 			sort(grupe.begin(), grupe.end(), compareP);
 		}
-
 		spausdinimas(grupe);
 	}
 }
