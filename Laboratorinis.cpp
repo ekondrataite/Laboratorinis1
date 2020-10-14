@@ -1,11 +1,9 @@
 // pirmaVektoriai.cpp : This file contains the 'main' function. Program execution begins and ends there.
 // github: https://github.com/ekondrataite/Laboratorinis
 //
-
 #include "biblioteka.h"
-#include "komparatoriai.h"
-#include "spausdinimas.h"
-#include "rusiavimas.h"
+#include "strukturos.h"
+#include "funkcijos.h"
 
 int main()
 {
@@ -16,9 +14,13 @@ int main()
 	string pasirinkimas;
 	cin >> pasirinkimas;
 
+	vector<studentas> grupe;
+	studentas laikinas;
+
 	//failo nuskaitymas
 
 	if (pasirinkimas == "Nuskaityti") {
+		//skaityti_faila(); 
 		ofstream mano_failas;
 		fstream failas;
 
@@ -79,7 +81,7 @@ int main()
 					rezultatai.push_back(rez);
 
 					for (int i = 0; i < rezultatai.size(); i++) {
-						
+
 						laikinas.push_back(stoi(rezultatai[i]));
 
 						rezultatai.clear();
@@ -87,7 +89,7 @@ int main()
 					}
 				}
 
-				grupe.push_back(studentas{vardas, pavarde, laikinas});
+				grupe.push_back(studentas{ vardas, pavarde, laikinas });
 
 				laikinas.clear();
 			}
@@ -101,7 +103,12 @@ int main()
 			string p;
 			cin >> p;
 
-			rusiavimas(p, grupe);
+			if (p == "V") {
+				sort(grupe.begin(), grupe.end(), compareV);
+			}
+			else if (p == "P") {
+				sort(grupe.begin(), grupe.end(), compareP);
+			}
 
 			//suvedimas i faila
 
@@ -131,9 +138,6 @@ int main()
 
 	//duomenu suvedimas ranka;
 
-	vector<studentas> grupe;
-	studentas laikinas;
-
 	if (pasirinkimas == "Ivesti") {
 		int n = 0;
 
@@ -151,6 +155,7 @@ int main()
 
 			string a;
 			cin >> a;
+
 
 			if (a == "Taip") {
 				srand(time(NULL));
@@ -197,7 +202,7 @@ int main()
 				string input;
 
 				laikinas.pazymiai.reserve(50);
-				
+
 				while (input != "end") {
 
 					cin >> input;
@@ -227,8 +232,12 @@ int main()
 		string p;
 		cin >> p;
 
-		rusiavimas(p, grupe);
-		
+		if (p == "V") {
+			sort(grupe.begin(), grupe.end(), compareV);
+		}
+		else if (p == "P") {
+			sort(grupe.begin(), grupe.end(), compareP);
+		}
 		spausdinimas(grupe);
 	}
 }
