@@ -14,6 +14,16 @@ int main()
 	string pasirinkimas;
 	cin >> pasirinkimas;
 
+	try {
+		if (pasirinkimas != "Nuskaityti" && pasirinkimas != "Ivesti") {
+			throw runtime_error("Klaidinga ivestis! Reikia ivesti 'Nuskaityti' arba 'Ivesti'");
+		}
+	}
+	catch (runtime_error& x) {
+		cout << x.what() << endl;
+		cout << "Jusu ivestis: " << pasirinkimas << endl;
+	}
+
 	vector<studentas> grupe;
 	studentas laikinas;
 
@@ -103,6 +113,16 @@ int main()
 			string p;
 			cin >> p;
 
+			try {
+				if (p != "V" && p != "P") {
+					throw runtime_error("Klaidinga ivestis! Reikia ivesti 'V' arba 'P'");
+				}
+			}
+			catch (runtime_error& x) {
+				cout << x.what() << endl;
+				cout << "Jusu ivestis: " << p << endl;
+			}
+
 			if (p == "V") {
 				sort(grupe.begin(), grupe.end(), compareV);
 			}
@@ -156,7 +176,6 @@ int main()
 			string a;
 			cin >> a;
 
-
 			if (a == "Taip") {
 				srand(time(NULL));
 				int sugeneruotas = rand() % 10 + 1;
@@ -196,6 +215,16 @@ int main()
 				cout << "Iveskite studento egzamino ivertinimas: " << endl;
 				cin >> laikinas.egzaminas;
 
+				try {
+					if (laikinas.egzaminas < 0 || laikinas.egzaminas >= 10) {
+						throw runtime_error("Klaidinga ivestis! Reikia ivesti skaiciu");
+					}
+				}
+				catch (runtime_error& x) {
+					cout << x.what() << endl;
+					cout << "Jusu ivestis: " << laikinas.egzaminas << endl;
+				}
+
 				cout << "Iveskite studento semestro namu darbu pazymius." << endl;
 				cout << "Suvede visus pazymius, suveskite 'end' ir spauskite Enter" << endl;
 
@@ -231,6 +260,16 @@ int main()
 
 		string p;
 		cin >> p;
+
+		try {
+			if (p != "V" && p != "P") {
+				throw runtime_error("Klaidinga ivestis! Reikia ivesti 'V' arba 'P'");
+			}
+		}
+		catch (runtime_error& x) {
+			cout << x.what() << endl;
+			cout << "Jusu ivestis: " << p << endl;
+		}
 
 		if (p == "V") {
 			sort(grupe.begin(), grupe.end(), compareV);
