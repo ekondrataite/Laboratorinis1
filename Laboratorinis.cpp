@@ -119,22 +119,24 @@ int main()
 
 			//rusiavimas
 
-			cout << "Iveskite kaip norite rusiuoti duomenis:" << endl;
-			cout << "Jei rusiuosite pagal vardus iveskite 'V'" << endl;
-			cout << "Jei rusiuosite pagal pavardes iveskite 'P'" << endl;
-
 			string p;
-			cin >> p;
+			do {
+				try {
+					cout << "Iveskite kaip norite rusiuoti duomenis:" << endl;
+					cout << "Jei rusiuosite pagal vardus iveskite 'V'" << endl;
+					cout << "Jei rusiuosite pagal pavardes iveskite 'P'" << endl;
+					
+					cin >> p;
 
-			try {
-				if (p != "V" && p != "P") {
-					throw runtime_error("Klaidinga ivestis! Reikia ivesti 'V' arba 'P'");
+					if (p != "V" && p != "P") {
+						throw runtime_error("Klaidinga ivestis! Reikia ivesti 'V' arba 'P'");
+					}
 				}
-			}
-			catch (runtime_error& x) {
-				cout << x.what() << endl;
-				cout << "Jusu ivestis: " << p << endl;
-			}
+				catch (runtime_error& x) {
+					cout << x.what() << endl;
+					cout << "Jusu ivestis: " << p << endl;
+				}
+			} while (p != "V" && p != "P");
 
 			if (p == "V") {
 				sort(grupe.begin(), grupe.end(), compareV);
@@ -213,18 +215,21 @@ int main()
 			}
 
 			if (a == "Ne") {
-				cout << "Iveskite studento egzamino ivertinimas: " << endl;
-				cin >> laikinas.egzaminas;
 
-				try {
-					if (laikinas.egzaminas < 0 || laikinas.egzaminas >= 11) {
-						throw runtime_error("Klaidinga ivestis! Reikia ivesti skaiciu 10-baleje sistemoje");
+				do {
+					try {
+						cout << "Iveskite studento egzamino ivertinima: " << endl;
+						cin >> laikinas.egzaminas;
+
+						if (laikinas.egzaminas < 0 || laikinas.egzaminas >= 11) {
+							throw runtime_error("Klaidinga ivestis! Reikia ivesti skaiciu 10-baleje sistemoje");
+						}
 					}
-				}
-				catch (runtime_error& x) {
-					cout << x.what() << endl;
-					cout << "Jusu ivestis: " << laikinas.egzaminas << endl;
-				}
+					catch (runtime_error& x) {
+						cout << x.what() << endl;
+						cout << "Jusu ivestis: " << laikinas.egzaminas << endl;
+					}
+				} while (laikinas.egzaminas < 0 || laikinas.egzaminas >= 11);
 			}
 
 			cout << "Ar semestro namu darbu ivertinimus sugeneruoti automatiskai? " << endl;
@@ -273,24 +278,27 @@ int main()
 				grupe.push_back(laikinas);
 			}
 		}
+
 		//pasirenkama pagal ka rusiuoti ir su rusiuojama;
 
-		cout << "Iveskite kaip norite rusiuoti duomenis:" << endl;
-		cout << "Jei rusiuosite pagal vardus iveskite 'V'" << endl;
-		cout << "Jei rusiuosite pagal pavardes iveskite 'P'" << endl;
-
 		string p;
-		cin >> p;
+		do {
+			try {
+				cout << "Iveskite kaip norite rusiuoti duomenis:" << endl;
+				cout << "Jei rusiuosite pagal vardus iveskite 'V'" << endl;
+				cout << "Jei rusiuosite pagal pavardes iveskite 'P'" << endl;
 
-		try {
-			if (p != "V" && p != "P") {
-				throw runtime_error("Klaidinga ivestis! Reikia ivesti 'V' arba 'P'");
+				cin >> p;
+
+				if (p != "V" && p != "P") {
+					throw runtime_error("Klaidinga ivestis! Reikia ivesti 'V' arba 'P'");
+				}
 			}
-		}
-		catch (runtime_error& x) {
-			cout << x.what() << endl;
-			cout << "Jusu ivestis: " << p << endl;
-		}
+			catch (runtime_error& x) {
+				cout << x.what() << endl;
+				cout << "Jusu ivestis: " << p << endl;
+			}
+		} while (p != "V" && p != "P");
 
 		if (p == "V") {
 			sort(grupe.begin(), grupe.end(), compareV);

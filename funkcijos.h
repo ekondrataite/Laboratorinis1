@@ -4,13 +4,8 @@
 
 //funkcijos reikalingos galutinio balo apskaiciavimui;
 float vidurkis(vector<int> pazymiai) {
-	int suma = 0;
 	int dydis = pazymiai.size();
-
-	for (int i = 0; i < dydis; i++) {
-		suma += pazymiai[i];
-	}
-	return suma / dydis;
+	return accumulate(pazymiai.begin(), pazymiai.end(), 0.000) / dydis;
 }
 
 float mediana(vector<int> pazymiai) {
