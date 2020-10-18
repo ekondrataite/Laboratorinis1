@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <chrono>
 #include <string>
+#include <chrono>
 
 using namespace std;
 
@@ -68,13 +69,15 @@ bool compareP(studentas a, studentas  b) {
 }
 
 vector<studentas> failo_nuskaitymas() {
+	auto startas = chrono::high_resolution_clock::now();
+
 	fstream failas;
 
 	string f;
 
 	do {
 		try {
-			cout << "Iveskite failo pavadinima (faila nurodykite su .txt gale)" << endl;
+			cout << "Pakartokite failo pavadinima: " << endl;
 			cin >> f;
 			failas.open(f);
 
@@ -137,9 +140,16 @@ vector<studentas> failo_nuskaitymas() {
 	}
 	failas.close();
 	return grupe;
+
+	auto baigta = chrono::high_resolution_clock::now();
+	chrono::duration<double> skirtumas = baigta - startas;
+
+	cout << "Faila nuskaityti uztruko: " << skirtumas.count() << "s" << endl;
 }
 
 void irasymas(vector<studentas> sarasas) {
+	auto startas = chrono::high_resolution_clock::now();
+
 	fstream failas;
 
 	string pavadinimas;
@@ -156,6 +166,11 @@ void irasymas(vector<studentas> sarasas) {
 
 	failas.close();
 	sarasas.clear();
+
+	auto baigta = chrono::high_resolution_clock::now();
+	chrono::duration<double> skirtumas = baigta - startas;
+
+	cout << "Failo irasymas truko: " << skirtumas.count() << "s" << endl;
 }
 
 
