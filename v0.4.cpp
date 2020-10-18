@@ -1,3 +1,4 @@
+#include <chrono>
 
 using namespace std;
 
@@ -10,6 +11,8 @@ int main()
     int studentu_sk;
     cout << "Iveskite kiek studentu norite sugeneruoti" << endl;
     cin >> studentu_sk;
+
+	auto startas1 = chrono::high_resolution_clock::now();
 
     vector<studentas> sarasas = studentu_generavimas(studentu_sk);
 
@@ -41,6 +44,11 @@ int main()
 
 	irasymas(sarasas);
 
+	auto baigta1 = chrono::high_resolution_clock::now();
+	chrono::duration<double> skirtumas1 = baigta1 - startas1;
+
+	cout << "Faila sukurti uztruko: " << skirtumas1.count() << "s" << endl;
+
 	string x;
 	do {
 		try {
@@ -60,6 +68,8 @@ int main()
 
 	if (x == "Taip") {
 
+		auto startas2 = chrono::high_resolution_clock::now();
+
 		vector<studentas> sarasas = failo_nuskaitymas();
 
 		vector<vargsiukai> varg;
@@ -76,6 +86,13 @@ int main()
 		ofstream vargsiukai;
 		ofstream kietiakai;
 
+		auto baigta2 = chrono::high_resolution_clock::now();
+		chrono::duration<double> skirtumas2 = baigta2 - startas2;
+
+		cout << "Studentu rusiavimas i dvi grupes uztruko: " << skirtumas2.count() << "s" << endl;
+
+		auto startas3 = chrono::high_resolution_clock::now();
+
 		vargsiukai.open("vargsiukai.txt");
 		kietiakai.open("kietiakai.txt");
 
@@ -90,6 +107,11 @@ int main()
 		for (int i = 0; i < kiet.size(); i++) {
 			kietiakai << left << setw(30) << kiet[i].vardas << setw(30) << kiet[i].pavarde << setw(30) << fixed << setprecision(2) << kiet[i].galutinis << endl;
 		}
+
+		auto baigta3 = chrono::high_resolution_clock::now();
+		chrono::duration<double> skirtumas3 = baigta3 - startas3;
+
+		cout << "Studentu isvedimas i naujus failus uztruko: " << skirtumas3.count() << "s" << endl;
 
 		vargsiukai.close();
 		kietiakai.close();
