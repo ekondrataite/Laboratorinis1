@@ -4,4 +4,9 @@
 
 vector<int> pazymiu_generavimas(int skaicius);
 vector<studentas> studentu_generavimas(int kiekis);
-void spausdinimas(vector<studentas> grupe);
+
+bool compareV(studentas a, studentas b);
+bool compareP(studentas a, studentas  b);
+
+vector<studentas> failo_nuskaitymas();
+void irasymas(vector<studentas> sarasas);

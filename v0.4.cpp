@@ -1,17 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <numeric>
-#include <algorithm>
-#include <fstream>
-#include <stdlib.h>
-#include <iomanip>
-#include <sstream>
-#include <cstdio>
-#include <iomanip>
-#include <ctime>
-#include <cctype>
-#include <cstring>
+
 using namespace std;
 
 #include "strukturos.h"
@@ -52,36 +39,65 @@ int main()
 		sort(sarasas.begin(), sarasas.end(), compareP);
 	}
 
-	vector<vargsiukai> varg;
-	vector<kietiakai> kiet;
+	irasymas(sarasas);
 
-	for (int i = 0; i < sarasas.size(); i++) {
-		if (sarasas[i].galutinis < 5) {
-			varg.push_back(vargsiukai{ sarasas[i].vardas, sarasas[i].pavarde, sarasas[i].galutinis });
+	string x;
+	do {
+		try {
+			cout << "Ar norite studentu faila sugrupuoti i 'vargsiukus' ir 'kietiakus'?" << endl;
+			cout << "Iveskite 'Taip' arba 'Ne'" << endl;
+			cin >> x;
+
+			if (x != "Taip" && x != "Ne") {
+				throw runtime_error("Klaidinga ivestis! Reikia ivesti 'V' arba 'P'");
+			}
 		}
-		else if (sarasas[i].galutinis >= 5) {
-			kiet.push_back(kietiakai{ sarasas[i].vardas, sarasas[i].pavarde, sarasas[i].galutinis });
+		catch (runtime_error& e) {
+			cout << e.what() << endl;
+			cout << "Jusu ivestis: " << x << endl;
 		}
+	} while (x != "Taip" && x != "Ne");
+
+	if (x == "Taip") {
+
+		vector<studentas> sarasas = failo_nuskaitymas();
+
+		vector<vargsiukai> varg;
+		vector<kietiakai> kiet;
+
+		for (int i = 0; i < sarasas.size(); i++) {
+			if (sarasas[i].galutinis < 5) {
+				varg.push_back(vargsiukai{ sarasas[i].vardas, sarasas[i].pavarde, sarasas[i].galutinis });
+			}
+			else if (sarasas[i].galutinis >= 5) {
+				kiet.push_back(kietiakai{ sarasas[i].vardas, sarasas[i].pavarde, sarasas[i].galutinis });
+			}
+		}
+		ofstream vargsiukai;
+		ofstream kietiakai;
+
+		vargsiukai.open("vargsiukai.txt");
+		kietiakai.open("kietiakai.txt");
+
+		vargsiukai << left << setw(30) << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << endl;
+
+		for (int i = 0; i < varg.size(); i++) {
+			vargsiukai << left << setw(30) << varg[i].vardas << setw(30) << varg[i].pavarde << setw(30) << fixed << setprecision(2) << varg[i].galutinis << endl;
+		}
+
+		kietiakai << left << setw(30) << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << endl;
+
+		for (int i = 0; i < kiet.size(); i++) {
+			kietiakai << left << setw(30) << kiet[i].vardas << setw(30) << kiet[i].pavarde << setw(30) << fixed << setprecision(2) << kiet[i].galutinis << endl;
+		}
+
+		vargsiukai.close();
+		kietiakai.close();
+
 	}
-	
-	ofstream vargsiukai;
-	ofstream kietiakai;
-
-	vargsiukai.open("vargsiukai.txt");
-	kietiakai.open("kietiakai.txt");
-
-	vargsiukai << left << setw(30) << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << endl;
-	
-	for (int i = 0; i < varg.size(); i++) {
-		vargsiukai << left << setw(30) << varg[i].vardas << setw(30) << varg[i].pavarde << setw(30) << fixed << setprecision(2) << varg[i].galutinis << endl;
+	else {
+		return 1;
 	}
-
-	kietiakai << left << setw(30) << "Vardas" << setw(30) << "Pavarde" << setw(30) << "Galutinis balas (vidurkis)" << endl;
-
-	for (int i = 0; i < kiet.size(); i++) {
-		kietiakai << left << setw(30) << kiet[i].vardas << setw(30) << kiet[i].pavarde << setw(30) << fixed << setprecision(2) << kiet[i].galutinis << endl;
-	}
-
-	vargsiukai.close();
-	kietiakai.close();
 }
+
+
