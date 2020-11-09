@@ -42,7 +42,7 @@
 - Duomenų suskirstymas į dvi kategorijas užtruko: 1.01388s
 
 #### studentai1000000.txt:
-Duomenų nuskaitymas iš failo užtruko: 60.6049s
+- Duomenų nuskaitymas iš failo užtruko: 60.6049s
 
 - Duomenų suskirstymas į dvi kategorijas užtruko: 10.8549s
 
