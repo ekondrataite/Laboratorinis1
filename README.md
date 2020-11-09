@@ -1,29 +1,29 @@
 # Konteinerių testavimo rezultatai
 ## vector konteinerio rezultatai:
 #### studentai1000.txt: 
-Duomenų nuskaitymas iš failo užtruko:  
+Duomenų nuskaitymas iš failo užtruko: 7.94099s
 
-Duomenų suskirstymas į dvi kategorijas užtruko:
+Duomenų suskirstymas į dvi kategorijas užtruko: 0.0086296s
 
 #### studentai10000.txt:
-Duomenų nuskaitymas iš failo užtruko:
+Duomenų nuskaitymas iš failo užtruko: 8.92438s
 
-Duomenų suskirstymas į dvi kategorijas užtruko:
+Duomenų suskirstymas į dvi kategorijas užtruko: 0.0900849s
 
 #### studentai100000.txt:
-Duomenų nuskaitymas iš failo užtruko:
+Duomenų nuskaitymas iš failo užtruko: 15.3675s
 
-Duomenų suskirstymas į dvi kategorijas užtruko:
+Duomenų suskirstymas į dvi kategorijas užtruko: 1.03048s
 
 #### studentai1000000.txt:
-Duomenų nuskaitymas iš failo užtruko:
+Duomenų nuskaitymas iš failo užtruko: 67.6514s
 
-Duomenų suskirstymas į dvi kategorijas užtruko:
+Duomenų suskirstymas į dvi kategorijas užtruko: 10.5382s
 
 #### studentai10000000.txt:
-Duomenų nuskaitymas iš failo užtruko:
+Duomenų nuskaitymas iš failo užtruko: 
 
-Duomenų suskirstymas į dvi kategorijas užtruko:
+Duomenų suskirstymas į dvi kategorijas užtruko: 
 
 ## list konteinerio rezultatai:
 #### studentai1000.txt: 
