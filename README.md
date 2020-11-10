@@ -50,3 +50,10 @@
 - Duomenų nuskaitymas iš failo užtruko:
 
 - Duomenų suskirstymas į dvi kategorijas užtruko:
+
+## Testavimo sistemos parametrai:
+CPU: Intel core i5-8265U
+
+RAM: 8.00GB
+
+SDD: 256GB
