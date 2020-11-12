@@ -56,4 +56,4 @@ CPU: Intel core i5-8265U
 
 RAM: 8.00GB
 
-SDD: 256GB
+SSD: 256GB
