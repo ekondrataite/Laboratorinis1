@@ -21,9 +21,9 @@
 - Duomenų suskirstymas į dvi kategorijas užtruko: 10.5382s
 
 #### studentai10000000.txt:
-- Duomenų nuskaitymas iš failo užtruko: 
+- Duomenų nuskaitymas iš failo užtruko: 603.395s
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 
+- Duomenų suskirstymas į dvi kategorijas užtruko: 124.839s
 
 ## 'list' konteinerio rezultatai:
 #### studentai1000.txt: 
@@ -47,9 +47,9 @@
 - Duomenų suskirstymas į dvi kategorijas užtruko: 10.8549s
 
 #### studentai10000000.txt:
-- Duomenų nuskaitymas iš failo užtruko:
+- Duomenų nuskaitymas iš failo užtruko: 531.46s
 
-- Duomenų suskirstymas į dvi kategorijas užtruko:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 81.4582s
 
 ## Testavimo sistemos parametrai:
 CPU: Intel core i5-8265U
