@@ -19,22 +19,27 @@
 #### 'vector' konteineriai:
 ###### studentai1000.txt: 
 - Duomenų suskirstymas į dvi kategorijas užtruko: 0.0088732s
+
 Rezultatas po algoritmų pritaikymo, kad programa būtų efektyvesnė:
 
 ###### studentai10000.txt:
 - Duomenų suskirstymas į dvi kategorijas užtruko: 0.0889698s
+
 Rezultatas po algoritmų pritaikymo, kad programa būtų efektyvesnė:
 
 ###### studentai100000.txt:
 - Duomenų suskirstymas į dvi kategorijas užtruko: 0.9843s
+
 Rezultatas po algoritmų pritaikymo, kad programa būtų efektyvesnė:
 
 ###### studentai1000000.txt:
 - Duomenų suskirstymas į dvi kategorijas užtruko: 12.5082s
+
 Rezultatas po algoritmų pritaikymo, kad programa būtų efektyvesnė:
 
 ###### studentai10000000.txt:
 - Duomenų suskirstymas į dvi kategorijas užtruko: 142.956s
+
 Rezultatas po algoritmų pritaikymo, kad programa būtų efektyvesnė:
 
 ## Antroji strategija: 
