@@ -2,55 +2,70 @@
 ## Pirmoji strategija: 
 #### 'list' konteineriai
 ###### studentai1000.txt: 
-- Duomenų nuskaitymas iš failo užtruko: 7.94099s 
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 0.0086296s
+###### studentai10000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-#### studentai10000.txt:
-- Duomenų nuskaitymas iš failo užtruko: 8.92438s
+###### studentai100000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 0.0900849s
+###### studentai1000000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko:
 
-#### studentai100000.txt:
-- Duomenų nuskaitymas iš failo užtruko: 15.3675s
+###### studentai10000000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 1.03048s
+#### 'vector' konteineriai:
+###### studentai1000.txt: 
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-#### studentai1000000.txt:
-- Duomenų nuskaitymas iš failo užtruko: 67.6514s
+###### studentai10000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 10.5382s
+###### studentai100000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-#### studentai10000000.txt:
-- Duomenų nuskaitymas iš failo užtruko: 603.395s
+###### studentai1000000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko:
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 124.839s
+###### studentai10000000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-## 'list' konteinerio rezultatai:
-#### studentai1000.txt: 
-- Duomenų nuskaitymas iš failo užtruko: 7.00546s
+## Antroji strategija:
+## Pirmoji strategija: 
+#### 'list' konteineriai
+###### studentai1000.txt: 
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 0.0100772s
+###### studentai10000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-#### studentai10000.txt:
-- Duomenų nuskaitymas iš failo užtruko: 9.083s
+###### studentai100000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 0.0952096s
+###### studentai1000000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko:
 
-#### studentai100000.txt:
-- Duomenų nuskaitymas iš failo užtruko: 13.1918s
+###### studentai10000000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 1.01388s
+#### 'vector' konteineriai:
+###### studentai1000.txt: 
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-#### studentai1000000.txt:
-- Duomenų nuskaitymas iš failo užtruko: 60.6049s
+###### studentai10000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 10.8549s
+###### studentai100000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
 
-#### studentai10000000.txt:
-- Duomenų nuskaitymas iš failo užtruko: 531.46s
+###### studentai1000000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko:
 
-- Duomenų suskirstymas į dvi kategorijas užtruko: 81.4582s
+###### studentai10000000.txt:
+- Duomenų suskirstymas į dvi kategorijas užtruko: 
+
 
 ## Testavimo sistemos parametrai:
 CPU: Intel core i5-8265U
