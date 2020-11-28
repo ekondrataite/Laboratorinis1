@@ -1,6 +1,7 @@
-# Konteinerių testavimo rezultatai
-## 'vector' konteinerio rezultatai: 
-#### studentai1000.txt: 
+# Strategijų testavimo rezultatai
+## Pirmoji strategija: 
+#### 'list' konteineriai
+###### studentai1000.txt: 
 - Duomenų nuskaitymas iš failo užtruko: 7.94099s 
 
 - Duomenų suskirstymas į dvi kategorijas užtruko: 0.0086296s
