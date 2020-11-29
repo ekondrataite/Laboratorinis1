@@ -11,51 +11,63 @@ using namespace std;
 
 int main()
 {
-	string x;
+	string pasirinkimas;
 	do {
 		try {
-			cout << "Ar norite studentu faila sugrupuoti i 'vargsiukus' ir 'kietiakus'?" << endl;
-			cout << "Iveskite 'Taip' arba 'Ne'" << endl;
-			cin >> x;
+			cout << "Pasirinkite koki konteineri norite naudoti grupavimui" << endl;
+			cout << "Iveskite 'vector' arba 'list'." << endl;
+			cin >> pasirinkimas;
 
-			if (x != "Taip" && x != "Ne") {
-				throw runtime_error("Klaidinga ivestis! Reikia ivesti 'V' arba 'P'");
+			if (pasirinkimas != "vector" && pasirinkimas != "list") {
+				throw runtime_error("Klaidinga ivestis! Reikia ivesti 'vector' arba 'list'");
 			}
 		}
 		catch (runtime_error& e) {
 			cout << e.what() << endl;
-			cout << "Jusu ivestis: " << x << endl;
+			cout << "Jusu ivestis: " << pasirinkimas << endl;
 		}
-	} while (x != "Taip" && x != "Ne");
+	} while (pasirinkimas != "vector" && pasirinkimas != "list");
 
-	if (x == "Taip") {
-
-		auto startas1 = chrono::high_resolution_clock::now();
-
-		list<studentas> sarasas = failo_nuskaitymas();
-
-		auto baigta1 = chrono::high_resolution_clock::now();
-		chrono::duration<double> skirtumas1 = baigta1 - startas1;
-		cout << "Duomenu is failo nuskaitymas uztruko: " << skirtumas1.count() << "s" << endl;
-
-		auto startas2 = chrono::high_resolution_clock::now();
+	if (pasirinkimas == "vector") {
+		vector<studentas> sarasas = failo_nuskaitymas_vektorius();
 
 		vector<vargsiukai> varg;
-		vector<kietiakai> kiet;
+
+		auto startas2 = chrono::high_resolution_clock::now();
 
 		for (studentas& s : sarasas) {
 			if (s.galutinis < 5) {
 				varg.push_back(vargsiukai{ s.vardas, s.pavarde, s.galutinis });
 			}
-			else if (s.galutinis >= 5) {
-				kiet.push_back(kietiakai{ s.vardas, s.pavarde, s.galutinis });
+		}
+		sarasas.erase(remove_if(sarasas.begin(), sarasas.end(), salyga), sarasas.end());
+
+		auto baigta2 = chrono::high_resolution_clock::now();
+		chrono::duration<double> skirtumas2 = baigta2 - startas2;
+		cout << "Studentu suskirstymas i dvi grupes uztruko: " << skirtumas2.count() << "s" << endl;
+		sarasas.clear();
+	}
+
+	else if (pasirinkimas == "list") {
+		list<studentas> sarasas = failo_nuskaitymas_list();
+
+		list<vargsiukai> varg;
+
+		auto startas2 = chrono::high_resolution_clock::now();
+
+		for (studentas& s : sarasas) {
+			if (s.galutinis < 5) {
+				varg.push_back(vargsiukai{ s.vardas, s.pavarde, s.galutinis });
 			}
 		}
+		sarasas.remove_if(salyga);
 
 		auto baigta2 = chrono::high_resolution_clock::now();
 		chrono::duration<double> skirtumas2 = baigta2 - startas2;
 		cout << "Studentu suskirstymas i dvi grupes uztruko: " << skirtumas2.count() << "s" << endl;
 
+		//irasymas(varg);
+		sarasas.clear();
 	}
 	else {
 		return 1;

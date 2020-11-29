@@ -17,10 +17,10 @@
 
 #include "strukturos.h"
 
-void studentu_suskirstymas(list<studentas> sarasas);
-
 bool compareV(studentas a, studentas b);
 bool compareP(studentas a, studentas  b);
 
-list<studentas> failo_nuskaitymas();
-void irasymas(vector<studentas> sarasas);
+vector<studentas> failo_nuskaitymas_vektorius();
+list<studentas> failo_nuskaitymas_list();
+void irasymas(list<vargsiukai> sarasas);
+bool salyga(const studentas& eilute);
