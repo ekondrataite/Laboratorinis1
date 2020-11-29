@@ -75,3 +75,5 @@ Programa atlieka veiksmus ir išveda grupes į du skirtingus failus.
 2 žingsnis: Vartotojas turi įvesti failo pavadinimą, kurį grupuos.
 
 Programa atlieka veiksmus ir išveda į ekraną rezultatą: laiką, kiek programa užtruko suskirstyti studentus į dvi kategorijas.
+
+[v1.0] (https://github.com/ekondrataite/Laboratorinis/releases/tag/v1.0)
