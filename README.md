@@ -1,5 +1,5 @@
 # Laboratorinis darbas
-Darbą sudaro 6 release'ai: v0.1, v0.2, v0.3, v0.4, v0.5, v1.0;
+Darbą sudaro 6 pre-release'ai: v0.1, v0.2, v0.3, v0.4, v0.5, v1.0.
 
 ## v0.1
 Šioje versijoje yra realizuota programa, kuri leidžia vartotojui įvesti studento vardą ir pavardę, namų darbų pažymius ir egzamino įvertinimą. Baigus duomenų įvedimą programa apskaičiuoja studento galutinį balą, naudojant formulę: 
@@ -77,3 +77,40 @@ Programa atlieka veiksmus ir išveda grupes į du skirtingus failus.
 Programa atlieka veiksmus ir išveda į ekraną rezultatą: laiką, kiek programa užtruko suskirstyti studentus į dvi kategorijas.
 
 [v1.0] (https://github.com/ekondrataite/Laboratorinis/releases/tag/v1.0)
+
+## v1.1
+Šioje versijoje iš 'struct' pereiname prie 'class'. Sukuriama class 'studentas'. Atliekame laiko matavimus, kai fiksuojamas konteineris 'list' ir naudojama 2 studentų grupavimo strategija, nes tokiu atveju programa veikia greičiausiai.
+
+Rezultatai su class 'studentas':
+
+- 'studentai100000.txt' grupavimas užtruko: 0.209205s
+
+- 'studentai1000000.txt' grupavimas užtruko: 2.26114s
+
+Rezultatai iš ankstesniojo tyrimo, kai 'studentas' yra struct:
+
+- 'studentai100000.txt' grupavimas užtruko: 0.272477s
+
+- 'studentai1000000.txt' grupavimas užtruko: 2.88236s
+
+Gauti rezultatai parodo, jog programa veikia greičiau, kai naudojame class 'studentas', tačiau skirtumas nėra didelis.
+
+Atliekama eksperimentinė analizė priklausomai nuo kompiliatoriaus optimizavimo lygio.
+
+Rezultatai:
+
+###### O1:
+
+- 'studentai100000.txt' grupavimas užtruko: 0.235127s
+
+- 'studentai1000000.txt' grupavimas užtruko: 3.15766s
+
+###### O2:
+
+- 'studentai100000.txt' grupavimas užtruko: 0.212149s
+
+- 'studentai1000000.txt' grupavimas užtruko: 2.56173s
+
+###### O3:
+Nebuvo pasirinkti kompiliatoriaus optimizavimo lygio.
+
