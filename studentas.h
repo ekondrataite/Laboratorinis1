@@ -17,6 +17,25 @@ public:
     studentas() {};
     studentas(string vard, string pav, vector<int> paz, int egz, float gal);
 
+    //destructor
+    ~studentas() {};
+
+    // copy assignment operator
+    studentas& operator=(const studentas& s)
+    {
+        vardas = s.vardas;
+        pavarde = s.pavarde;
+        pazymiai = s.pazymiai;
+        egzaminas = s.egzaminas;
+        galutinis = s.galutinis;
+        return *this;
+    };
+
+    //copy constructor
+    studentas(const studentas& s) : vardas(s.vardas), pavarde(s.pavarde), pazymiai(s.pazymiai), egzaminas(s.egzaminas), galutinis(s.galutinis)
+    {
+    }
+
     //getteriai
 
     const string& getVardas()
