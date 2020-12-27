@@ -23,6 +23,6 @@ int main()
 	chrono::duration<double> skirtumas2 = baigta2 - startas2;
 	cout << "Studentu suskirstymas i dvi grupes uztruko: " << skirtumas2.count() << "s" << endl;
 
-	//irasymas(vargsiukai);
+	irasymas(vargsiukai);
 	//irasymas(sarasas);
 }

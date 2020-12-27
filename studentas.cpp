@@ -1,8 +1,7 @@
 #include "studentas.h"
+#include "zmogus.h"
 
-studentas::studentas(string vard, string pav, vector<int> paz, int egz, float gal) {
-	vardas = vard;
-	pavarde = pav;
+studentas::studentas(string vard, string pav, vector<int> paz, int egz, float gal) : zmogus(vard, pav) {
 	pazymiai = paz;
 	egzaminas = egz;
 	galutinis = gal;

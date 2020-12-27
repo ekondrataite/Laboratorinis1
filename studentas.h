@@ -1,10 +1,9 @@
 #pragma once
 #include "biblioteka.h"
+#include "zmogus.h"
 
-class studentas {
+class studentas : public zmogus {
 private:
-    string vardas;
-    string pavarde;
     vector<int> pazymiai;
     int egzaminas;
     float galutinis;
@@ -23,6 +22,7 @@ public:
     // copy assignment operator
     studentas& operator=(const studentas& s)
     {
+        zmogus::operator=(s);
         vardas = s.vardas;
         pavarde = s.pavarde;
         pazymiai = s.pazymiai;
@@ -30,11 +30,6 @@ public:
         galutinis = s.galutinis;
         return *this;
     };
-
-    //copy constructor
-    studentas(const studentas& s) : vardas(s.vardas), pavarde(s.pavarde), pazymiai(s.pazymiai), egzaminas(s.egzaminas), galutinis(s.galutinis)
-    {
-    }
 
     //getteriai
 
@@ -64,16 +59,6 @@ public:
     }
 
     //setteriai
-
-    void setVardas(const string& vard)
-    {
-        vardas = vard;
-    }
-
-    void setPavarde(const string& pav)
-    {
-        pavarde = pav;
-    }
 
     void setPazymiai(const vector<int>& paz)
     {
