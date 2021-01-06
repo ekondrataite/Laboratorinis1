@@ -1,5 +1,6 @@
+@mainpage Objektinio programavimo laboratorinio darbo dokumentacija su doxygen
+
 # Laboratorinis darbas
-Darbą sudaro 6 pre-release'ai: v0.1, v0.2, v0.3, v0.4, v0.5, v1.0.
 
 ## v0.1
 Šioje versijoje yra realizuota programa, kuri leidžia vartotojui įvesti studento vardą ir pavardę, namų darbų pažymius ir egzamino įvertinimą. Baigus duomenų įvedimą programa apskaičiuoja studento galutinį balą, naudojant formulę: 
@@ -114,3 +115,14 @@ Rezultatai:
 ###### O3:
 Nebuvo pasirinkti kompiliatoriaus optimizavimo lygio.
 
+[v1.1] https://github.com/ekondrataite/Laboratorinis1/releases/tag/v1.1
+
+## v1.2
+Šioje versijoje realizuota "Rule Of Three" klasei 'studentas'.
+
+[v1.2] https://github.com/ekondrataite/Laboratorinis1/releases/tag/v1.2
+
+## v1.5
+Šioje versijoje sukurta abstrakčioji bazinė klasė 'zmogus', šios klasės objektai nėra kuriami, ją paveldi klasė 'studentas'.
+
+[v1.5] https://github.com/ekondrataite/Laboratorinis1/releases/tag/v1.5
